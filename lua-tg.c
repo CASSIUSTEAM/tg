@@ -816,7 +816,7 @@ void lua_contact_list_cb (struct tgl_state *TLSR, void *cb_extra, int success, i
 
   luaL_unref (luaState, LUA_REGISTRYINDEX, cb->func);
   luaL_unref (luaState, LUA_REGISTRYINDEX, cb->param);
-
+ 
   if (r) {
     logprintf ("lua: %s\n",  lua_tostring (luaState, -1));
   }
