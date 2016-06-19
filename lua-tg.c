@@ -1243,8 +1243,8 @@ void lua_do_all (void) {
       p += 3;
       break;
     case lq_send_photo:
-      tgl_do_send_document (TLS, lua_ptr[p + 1].peer_id, lua_ptr[p + 2].str, NULL, 0, TGL_SEND_MSG_FLAG_DOCUMENT_PHOTO, lua_msg_cb, lua_ptr[p].ptr);
-      p += 3;
+      tgl_do_send_document (TLS, lua_ptr[p + 1].peer_id, lua_ptr[p + 2].str, lua_ptr[p + 3].str, 200, TGL_SEND_MSG_FLAG_DOCUMENT_PHOTO, lua_msg_cb, lua_ptr[p].ptr);
+      p += 4;
       break;
     case lq_send_video:
       tgl_do_send_document (TLS, lua_ptr[p + 1].peer_id, lua_ptr[p + 2].str, NULL, 0, TGL_SEND_MSG_FLAG_DOCUMENT_VIDEO, lua_msg_cb, lua_ptr[p].ptr);
@@ -1570,7 +1570,7 @@ struct lua_function functions[] = {
   {"post_msg", lq_msg_channel, { lfp_channel, lfp_string, lfp_none }},
   {"send_typing", lq_send_typing, { lfp_peer, lfp_none }},
   {"send_typing_abort", lq_send_typing_abort, { lfp_peer, lfp_none }},
-  {"send_photo", lq_send_photo, { lfp_peer, lfp_string, lfp_none }},
+  {"send_photo", lq_send_photo, { lfp_peer, lfp_string, lfp_string, lfp_none }},
   {"send_video", lq_send_video, { lfp_peer, lfp_string, lfp_none }},
   {"send_audio", lq_send_audio, { lfp_peer, lfp_string, lfp_none }},
   {"send_document", lq_send_document, { lfp_peer, lfp_string, lfp_none }},
